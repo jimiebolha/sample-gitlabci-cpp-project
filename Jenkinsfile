@@ -28,13 +28,8 @@ podTemplate(label: 'mypod', containers: [
 
         stage('do some kubectl work') {
             container('kubectl') {
-
-#                withCredentials([[$class: 'UsernamePasswordMultiBinding', 
-#                        credentialsId: 'jimiealmeida',
-#                        usernameVariable: 'DOCKER_HUB_USER',
-#                        passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
-#                    
-                    sh "kubectl get pods"
+                    
+               sh "kubectl get pods"
                 }
             }
         }
