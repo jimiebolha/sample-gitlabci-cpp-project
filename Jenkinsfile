@@ -28,7 +28,7 @@ podTemplate(label: 'mypod', containers: [
 
         stage('Listando Pods') {
            container('kubectl') {
-             sh "kubectl get pods" 
+             sh "kubectl --insecure-skip-tls-verify --server https://192.168.99.100:8443 --namespace default get nodes" 
           }
         }
       }
