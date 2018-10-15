@@ -28,7 +28,7 @@ podTemplate(label: 'mypod', containers: [
 
         stage('Listando Pods') {
            container('kubectl') {
-             sh "kubectl --kubeconfig=/utils/config -n default get pods"
+             sh " kubectl --token "$jenkins" -n default get pods"
           }
         }
       }
