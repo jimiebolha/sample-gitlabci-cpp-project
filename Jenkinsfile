@@ -28,11 +28,16 @@ podTemplate(label: 'mypod', containers: [
 
         stage('do some kubectl work') {
             container('kubectl') {
+                 withCredentials([[$class: 'UsernamePasswordMultiBinding', 
+                        credentialsId: 'Kubernetes',
+                        usernameVariable: 'KUBERNETES_USER',
+                        passwordVariable: 'KUBERNETES_PASSWORD']]) {
                     
-               sh "kubectl get pods"
+                    sh "kubectl get nodes"
                 }
             }
         }
+
         stage('do some helm work') {
             container('helm') {
 
