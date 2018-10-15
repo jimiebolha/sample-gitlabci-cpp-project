@@ -1,5 +1,6 @@
 podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.8.8', command: 'cat', ttyEnabled: true),	
     containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
@@ -25,9 +26,9 @@ podTemplate(label: 'mypod', containers: [
             }
         }
 
-        stage('Run helm') {
-           container('helm') {
-             sh "helm list"
+        stage('Listando Pods') {
+           container('kubectl') {
+             sh "kubectl --kubeconfig=/utils/config -n default get pods"
           }
         }
       }
