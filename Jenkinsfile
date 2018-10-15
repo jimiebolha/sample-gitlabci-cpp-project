@@ -1,6 +1,6 @@
 podTemplate(label: 'mypod', containers: [
     containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'kubectl', image: 'jimiealmeida/kubectl', command: 'cat', ttyEnabled: true),	
+    containerTemplate(name: 'kubectl', image: 'jimiealmeida/kubectl:v1.0', command: 'cat', ttyEnabled: true),	
     containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
