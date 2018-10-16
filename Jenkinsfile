@@ -28,7 +28,9 @@ podTemplate(label: 'mypod', containers: [
 
         stage('Listando Pods') {
            container('kubectl') {
-             sh "kubectl --insecure-skip-tls-verify=true --server=https://192.168.99.100:8443 -n default --user=jenkins get nodes" 
+                withCredentials([kubeconfigContent(credentialsId: 'acs-ssh-folder', variable: 'KUBECONFIG_CONTENT')]) {
+                    sh '''echo "$KUBECONFIG_CONTENT" > ~/.kube/config && kubectl get nodes'''
+              }  
           }
         }
       }
