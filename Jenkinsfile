@@ -28,7 +28,7 @@ podTemplate(label: 'mypod', containers: [
 
         stage('Listando Pods') {
            container('kubectl') {
-                withCredentials([kubeconfigContent(credentialsId: 'acs-ssh-folder', variable: 'KUBECONFIG_CONTENT')]) {
+                withCredentials([kubeconfigContent(credentialsId: 'KUBECONFIG_CONTENT', variable: 'KUBECONFIG_CONTENT')]) {
                     sh '''echo "$KUBECONFIG_CONTENT" > ~/.kube/config && kubectl get nodes'''
               }  
           }
