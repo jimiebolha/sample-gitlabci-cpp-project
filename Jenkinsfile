@@ -29,7 +29,7 @@ podTemplate(label: 'mypod', containers: [
         stage('Listando Pods') {
            container('kubectl') {
                 withCredentials([kubeconfigContent(credentialsId: 'KUBECONFIG_CONTENT', variable: 'KUBECONFIG_CONTENT')]) {
-                    sh '''echo "$KUBECONFIG_CONTENT" > ~/config && kubectl config --kubeconfig=~/config set-context svcs-acct-context && kubectl --kubeconfig=~/config set-context svcs-acct-context get pods
+                    sh '''echo "$KUBECONFIG_CONTENT" > ~/config && kubectl config --kubeconfig=~/config set-context svcs-acct-context && kubectl set-context svcs-acct-context get pods
                     '''
               }  
           }
