@@ -6,7 +6,6 @@ podTemplate(label: 'mypod', containers: [
   ]) {
     node('mypod') {
 
-
         stage('Listando Pods') {
            container('kubectl') {
                 withCredentials([kubeconfigContent(credentialsId: 'KUBECONFIG_CONTENT', variable: 'KUBECONFIG_CONTENT')]) {
