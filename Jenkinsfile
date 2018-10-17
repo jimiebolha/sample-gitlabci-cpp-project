@@ -18,7 +18,7 @@ podTemplate(label: 'mypod', containers: [
                 }
             }
         }
-       stage(Push DocherHub Imagei Busybox) {
+       stage('Push DocherHub Imagei Busybox') {
            container('docker'){
 	      withCredentials([[$class: 'UsernamePasswordMultiBinding',
                         credentialsId: 'jimiealmeida',
